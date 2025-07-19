@@ -322,11 +322,9 @@ class MRKTBalance:
         return self.__dict__.get("friendsCount", 0)
 
     def hard_normal(self):
-        """Конвертирует hard баланс из nano в USD"""
         from ..utils.functions import nanoToNormal
         return float(nanoToNormal(self.hard))
 
     def total_hard_normal(self):
-        """Конвертирует totalHard баланс из nano в USD"""
         from ..utils.functions import nanoToNormal
         return float(nanoToNormal(self.total_hard))
