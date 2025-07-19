@@ -1,4 +1,4 @@
-from .utils.other import API_URL, HEADERS_MAIN, SORTS
+from .utils.other import API_URL, HEADERS_MAIN
 from .classes.Objects import MRKTGift
 from .classes.Exceptions import authDataError, giftsError
 from .handlers import fetch, requestExceptionHandler
