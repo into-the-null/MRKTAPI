@@ -2,12 +2,11 @@
 MRKTAPI - Библиотека для работы с Telegram Market API
 
 Библиотека предоставляет удобный интерфейс для взаимодействия с API
-платформы Telegram Market (TGMKT) для торговли NFT подарками.
+платформы Telegram Market (MRKT) для торговли NFT подарками.
 
 Основные возможности:
 - Поиск и покупка подарков
 - Управление своими подарками
-- Работа с гивевеями
 - Получение баланса
 - Конвертация цен
 
@@ -17,15 +16,11 @@ MRKTAPI - Библиотека для работы с Telegram Market API
     from MRKTAPI.balance import getBalance
     
     async def main():
-        balance = await getBalance(authData="Bearer YOUR_TOKEN")
-        gifts = await search(token="Bearer YOUR_TOKEN", count=10)
+        balance = await getBalance(authData="")
+        gifts = await search(authData="", count=10)
         
     asyncio.run(main())
 """
-
-__version__ = "1.0.0"
-__author__ = "MRKTAPI Developer"
-__description__ = "Библиотека для работы с Telegram Market API"
 
 # Основные функции
 from .search import search
@@ -33,14 +28,14 @@ from .buy import buy
 from .sale import sale
 from .cancel import cancel
 from .myGifts import getMyGifts
-from .createGiveaway import createGiveaway
 from .getGiveaway import getGiveaways
 from .balance import getBalance
+from .giftsFloors import giftsFloors
+from .modelFloors import modelFloors
 
 # Классы объектов
 from .classes.Objects import (
     MRKTGift,
-    MRKTGiveaway,
     MRKTBalance,
     GiftsFloors,
     ModelFloors
@@ -74,13 +69,13 @@ __all__ = [
     "sale",
     "cancel",
     "getMyGifts",
-    "createGiveaway",
     "getGiveaways",
     "getBalance",
+    "giftsFloors",
+    "modelFloors",
     
     # Классы объектов
     "MRKTGift",
-    "MRKTGiveaway", 
     "MRKTBalance",
     "GiftsFloors",
     "ModelFloors",

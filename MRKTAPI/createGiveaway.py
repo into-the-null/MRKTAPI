@@ -71,7 +71,7 @@ async def createGiveaway(
         my_giveaways, _ = await getGiveaways(
             giveaway_type="Mine",
             count=1,
-            token=authData
+            authData=authData
         )
         
         # Ищем созданный гивевей

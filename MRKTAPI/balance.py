@@ -18,7 +18,7 @@ async def getBalance(authData: str = "") -> MRKTBalance:
     
     result = response.json()
     
-    # Проверяем на ошибки аккаунта
+
     if "error" in result:
         raise accountError(f"MRKTAPI: getBalance(): Error: {result['error']}")
     

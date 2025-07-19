@@ -7,11 +7,11 @@ async def getGiveaways(
     giveaway_type: str = "Free",
     count: int = 20,
     cursor: str = "",
-    token: str = ""
+    authData: str = ""
 ) -> tuple[list[MRKTGiveaway], str]:
 
-    if not token:
-        raise authDataError("MRKTAPI: getGiveaways(): Error: token is required")
+    if not authData:
+        raise authDataError("MRKTAPI: getGiveaways(): Error: authData is required")
 
     if count > 20:
         raise giftsError("MRKTAPI: getGiveaways(): Error: max count is 20")
@@ -21,7 +21,7 @@ async def getGiveaways(
         raise giftsError(f"MRKTAPI: getGiveaways(): Error: type must be one of {valid_types}")
 
     URL = API_URL + f"giveaways?type={giveaway_type}&count={count}&cursor={cursor}"
-    HEADERS = {**HEADERS_MAIN, "Authorization": token}
+    HEADERS = {**HEADERS_MAIN, "Authorization": authData}
 
     response = await fetch(method="GET", url=URL, headers=HEADERS, impersonate="chrome110")
     requestExceptionHandler(response, "getGiveaways")

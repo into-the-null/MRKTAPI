@@ -20,11 +20,11 @@ async def getMyGifts(
     is_premarket=None,
     query=None,
     is_listed=False,
-    token=""
+    authData=""
 ) -> list[MRKTGift]:
 
-    if not token:
-        raise authDataError("MRKTAPI: getMyGifts(): Error: token is required")
+    if not authData:
+        raise authDataError("MRKTAPI: getMyGifts(): Error: authData is required")
 
     if count > 20:
         raise giftsError("MRKTAPI: getMyGifts(): Error: max count is 20")
@@ -63,7 +63,7 @@ async def getMyGifts(
     }
 
     URL = API_URL + "gifts"
-    HEADERS = {**HEADERS_MAIN, "Authorization": token}
+    HEADERS = {**HEADERS_MAIN, "Authorization": authData}
 
     response = await fetch(method="POST", url=URL, headers=HEADERS, json=json_data, impersonate="chrome110")
     requestExceptionHandler(response, "getMyGifts")

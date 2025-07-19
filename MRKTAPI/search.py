@@ -20,13 +20,13 @@ async def search(
     low_to_high=False,
     is_premarket=False,
     query=None,
-    token="",
+    authData="",
     promoted_first=False
 ) -> list[MRKTGift]:
 
 
-    if not token:
-        raise authDataError("MRKT API: search(): Error: token is required")
+    if not authData:
+        raise authDataError("MRKT API: search(): Error: authData is required")
 
     if count > 20:
         raise giftsError("MRKT API: search(): Error: max count is 20")
@@ -69,7 +69,7 @@ async def search(
     }
 
     URL = API_URL + "gifts/saling"
-    HEADERS = {**HEADERS_MAIN, "Authorization": token}
+    HEADERS = {**HEADERS_MAIN, "Authorization": authData}
 
     response = await fetch(method="POST", url=URL, headers=HEADERS, json=json_data, impersonate="chrome110")
     requestExceptionHandler(response, "search")
