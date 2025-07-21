@@ -2,7 +2,6 @@ from .utils.other import API_URL, HEADERS_MAIN
 from .classes.Objects import GiftsFloors
 from .classes.Exceptions import authDataError, giftsError
 from .handlers import fetch, requestExceptionHandler
-from .utils.functions import  nanoToNormal
 
 
 async def giftsFloors(authData: str = "") -> GiftsFloors:
@@ -21,7 +20,7 @@ async def giftsFloors(authData: str = "") -> GiftsFloors:
     data = response.json()
 
     floors_dict = {
-        gift["name"]: float(nanoToNormal(gift["floorPriceNanoTons"]))
+        gift["name"]: gift["floorPriceNanoTons"]
         for gift in data
     }
 

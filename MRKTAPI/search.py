@@ -2,8 +2,6 @@ from .utils.other import API_URL, HEADERS_MAIN
 from .classes.Objects import MRKTGift
 from .classes.Exceptions import authDataError, giftsError
 from .handlers import fetch, requestExceptionHandler
-from .utils.functions import convertToNano
-from urllib.parse import quote_plus
 
 async def search(
     count=20,
@@ -47,9 +45,6 @@ async def search(
     symbol_names = check_and_list(symbol_names, "symbol_names")
 
 
-    min_price_nano = convertToNano(min_price) if min_price is not None else None
-    max_price_nano = convertToNano(max_price) if max_price is not None else None
-
     json_data = {
         "count": count,
         "cursor": cursor,
@@ -57,8 +52,8 @@ async def search(
         "modelNames": model_names,
         "backdropNames": backdrop_names,
         "symbolNames": symbol_names,
-        "minPrice": min_price_nano,
-        "maxPrice": max_price_nano,
+        "minPrice": max_price,
+        "maxPrice": max_price,
         "mintable": mintable,
         "number": number,
         "ordering": ordering,

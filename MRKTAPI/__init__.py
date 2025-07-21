@@ -32,11 +32,11 @@ from .getGiveaway import getGiveaways
 from .balance import getBalance
 from .giftsFloors import giftsFloors
 from .modelFloors import modelFloors
+from .return_gift import returnGifts
 
 # Классы объектов
 from .classes.Objects import (
     MRKTGift,
-    MRKTBalance,
     GiftsFloors,
     ModelFloors
 )
@@ -54,12 +54,8 @@ from .classes.Exceptions import (
 
 # Утилиты
 from .utils.functions import (
-    nanoToNormal,
-    convertToNano,
-    toShortName,
     rarityPerMilleToPercent,
-    cap,
-    listToURL
+    cap
 )
 
 __all__ = [
@@ -73,10 +69,10 @@ __all__ = [
     "getBalance",
     "giftsFloors",
     "modelFloors",
+    "returnGifts",
     
     # Классы объектов
     "MRKTGift",
-    "MRKTBalance",
     "GiftsFloors",
     "ModelFloors",
     
@@ -90,10 +86,6 @@ __all__ = [
     "tradingError",
     
     # Утилиты
-    "nanoToNormal",
-    "convertToNano",
-    "toShortName",
     "rarityPerMilleToPercent",
-    "cap",
-    "listToURL"
+    "cap"
 ] 

@@ -12,7 +12,7 @@ class MRKTGift:
         return self.__dict__.get("id", None)
 
     @property
-    def gift_id(self):
+    def giftId(self):
         return self.__dict__.get("giftId", None)
 
     @property
@@ -24,11 +24,11 @@ class MRKTGift:
         return self.__dict__.get("title", None)
 
     @property
-    def sale_price(self):
+    def price(self):
         return self.__dict__.get("salePrice", 0)
 
     @property
-    def collection_name(self):
+    def collectionName(self):
         return self.__dict__.get("collectionName", None)
 
     @property
@@ -36,7 +36,7 @@ class MRKTGift:
         return self.__dict__.get("modelName", None)
 
     @property
-    def model_rarity(self):
+    def modelRarity(self):
         value = self.__dict__.get("modelRarityPerMille")
         return rarityPerMilleToPercent(value) if value is not None else None
 
@@ -45,7 +45,7 @@ class MRKTGift:
         return self.__dict__.get("symbolName", None)
 
     @property
-    def symbol_rarity(self):
+    def symbolRarity(self):
         value = self.__dict__.get("symbolRarityPerMille")
         return rarityPerMilleToPercent(value) if value is not None else None
 
@@ -54,97 +54,53 @@ class MRKTGift:
         return self.__dict__.get("backdropName", None)
 
     @property
-    def backdrop_rarity(self):
+    def backdropRarity(self):
         value = self.__dict__.get("backdropRarityPerMille")
         return rarityPerMilleToPercent(value) if value is not None else None
 
     @property
-    def is_on_sale(self):
+    def isOnSale(self):
         return bool(self.__dict__.get("isOnSale"))
 
     @property
-    def is_on_auction(self):
+    def isOnAuction(self):
         return bool(self.__dict__.get("isOnAuction"))
 
     @property
-    def is_locked(self):
+    def isLocked(self):
         return bool(self.__dict__.get("isLocked"))
 
     @property
-    def is_mine(self):
+    def isMine(self):
         return bool(self.__dict__.get("isMine"))
 
     @property
-    def is_giveaway_received(self):
+    def isGiveawayReceived(self):
         return bool(self.__dict__.get("isGiveawayReceived"))
 
     @property
-    def is_listed(self):
+    def isListed(self):
         return bool(self.__dict__.get("isListed"))
 
     @property
-    def premarket_status(self):
+    def premarketStatus(self):
         return self.__dict__.get("premarketStatus", None)
 
     @property
-    def sales_count(self):
+    def salesCount(self):
         return self.__dict__.get("salesCount", 0)
 
     @property
-    def tg_id(self):
+    def tgId(self):
         return self.__dict__.get("number", None)
 
     @property
-    def export_date(self):
+    def exportDate(self):
         return self.__dict__.get("exportDate", None)
 
     @property
-    def received_date(self):
-        return self.__dict__.get("receivedDate", None)
-
-    @property
-    def max_upgraded_count(self):
-        return self.__dict__.get("maxUpgradedCount", 0)
-
-    @property
-    def total_upgraded_count(self):
-        return self.__dict__.get("totalUpgradedCount", 0)
-
-    @property
-    def promote_end_at(self):
-        return self.__dict__.get("promoteEndAt", None)
-
-    @property
-    def next_resale_date(self):
-        return self.__dict__.get("nextResaleDate", None)
-
-    @property
-    def next_transfer_date(self):
-        return self.__dict__.get("nextTransferDate", None)
-
-    @property
-    def unlock_date(self):
+    def unlockDate(self):
         return self.__dict__.get("unlockDate", None)
-
-    @property
-    def is_on_platform(self):
-        return bool(self.__dict__.get("isOnPlatform"))
-
-    @property
-    def is_locked_for_resale(self):
-        return self.is_locked or self.is_giveaway_received
-
-    @property
-    def can_be_sold(self):
-        return self.is_mine and not self.is_locked_for_resale and not self.is_on_sale
-
-    @property
-    def can_be_transferred(self):
-        return self.is_mine and not self.is_locked_for_resale
-
-    @property
-    def can_be_given(self):
-        return self.is_mine and not self.is_locked_for_resale
     
 
 class MRKTGiveaway:
@@ -159,27 +115,27 @@ class MRKTGiveaway:
         return self.__dict__.get("id", None)
 
     @property
-    def created_at(self):
+    def createdAt(self):
         return self.__dict__.get("createdAt", None)
 
     @property
-    def end_at(self):
+    def endAt(self):
         return self.__dict__.get("endAt", None)
 
     @property
-    def ticket_price_nano(self):
+    def ticketPrice(self):
         return self.__dict__.get("ticketPriceNanoTons", 0)
 
     @property
-    def is_channel_boost_required(self):
+    def isChannelBoostRequired(self):
         return bool(self.__dict__.get("isChanelBoostRequired"))
 
     @property
-    def is_for_premium(self):
+    def isForPremium(self):
         return bool(self.__dict__.get("isForPremium"))
 
     @property
-    def is_for_active_traders(self):
+    def isForActiveTraders(self):
         return bool(self.__dict__.get("isForActiveTraders"))
 
     @property
@@ -191,32 +147,32 @@ class MRKTGiveaway:
         return self.__dict__.get("duration", None)
 
     @property
-    def is_mine(self):
+    def isMine(self):
         return bool(self.__dict__.get("isMine"))
 
     @property
-    def preview_gift(self):
+    def previewGift(self):
         gift_data = self.__dict__.get("previewGift", {})
         return MRKTGift(gift_data) if gift_data else None
 
     @property
-    def participants_count(self):
+    def participantsCount(self):
         return self.__dict__.get("participantsCount", 0)
 
     @property
-    def my_tickets_count(self):
+    def myTicketsCount(self):
         return self.__dict__.get("myTicketsCount", 0)
 
     @property
-    def validation_status(self):
+    def validationStatus(self):
         return self.__dict__.get("validationStatus", None)
 
     @property
-    def gifts_count(self):
+    def giftsCount(self):
         return self.__dict__.get("giftsCount", 0)
 
     @property
-    def total_tickets(self):
+    def totalTickets(self):
         return self.__dict__.get("totalTickets", 0)
 
     @property
@@ -232,42 +188,42 @@ class MRKTGiveaway:
         return self.__dict__.get("badge", None)
 
     @property
-    def prize_pool_type(self):
+    def prizePoolType(self):
         return self.__dict__.get("prizePoolType", None)
 
     @property
-    def is_free(self):
-        return self.ticket_price_nano == 0
+    def isFree(self):
+        return self.ticketPrice == 0
 
     @property
-    def is_paid(self):
-        return self.ticket_price_nano > 0
+    def isPaid(self):
+        return self.ticketPrice > 0
 
     @property
-    def is_active(self):
+    def isActive(self):
         from datetime import datetime
-        if not self.end_at:
+        if not self.endAt:
             return False
         try:
-            end_time = datetime.fromisoformat(self.end_at.replace('Z', '+00:00'))
+            end_time = datetime.fromisoformat(self.endAt.replace('Z', '+00:00'))
             return end_time > datetime.now(end_time.tzinfo)
         except:
             return False
 
     @property
-    def can_participate(self):
-        return self.is_active and self.validation_status == "Validated"
+    def canParticipate(self):
+        return self.isActive and self.validationStatus == "Validated"
 
 
 class GiftsFloors:
     def __init__(self, data: dict):
         self._data = data
 
-    def to_dict(self):
+    def toDict(self):
         return self._data
 
-    def floor(self, gift_short_name: str):
-        return float(self._data.get(gift_short_name, 0.0))
+    def floor(self, giftShortName: str):
+        return float(self._data.get(giftShortName, 0.0))
     
 
 class ModelFloors:
@@ -279,7 +235,7 @@ class ModelFloors:
             if name:
                 self._floors[name] = price
 
-    def to_dict(self):
+    def toDict(self):
         return self._floors
 
     def floor(self, model_name: str):
@@ -288,43 +244,3 @@ class ModelFloors:
     @property
     def models(self):
         return list(self._floors.keys())
-
-
-class MRKTBalance:
-    def __init__(self, data: dict):
-        self.__dict__ = data
-
-    def toDict(self):
-        return self.__dict__
-
-    @property
-    def soft(self):
-        return self.__dict__.get("soft", 0)
-
-    @property
-    def hard(self):
-        return self.__dict__.get("hard", 0)
-
-    @property
-    def total_hard(self):
-        return self.__dict__.get("totalHard", 0)
-
-    @property
-    def stars(self):
-        return self.__dict__.get("stars", 0)
-
-    @property
-    def stars_for_withdraw(self):
-        return self.__dict__.get("starsFotWithdraw", 0)
-
-    @property
-    def friends_count(self):
-        return self.__dict__.get("friendsCount", 0)
-
-    def hard_normal(self):
-        from ..utils.functions import nanoToNormal
-        return float(nanoToNormal(self.hard))
-
-    def total_hard_normal(self):
-        from ..utils.functions import nanoToNormal
-        return float(nanoToNormal(self.total_hard))
